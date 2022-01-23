@@ -69,8 +69,8 @@ export const CardContent = styled.div<
   color: props.theme.color.text,
   fontWeight: props.theme.fontWeight.normal,
   padding: props.loading
-    ? props.theme.space[props.spacing] * 2
-    : props.theme.space[props.spacing],
+    ? props.theme.space[props.spacing || 'md'] * 2
+    : props.theme.space[props.spacing || 'md'],
   textAlign: props.loading ? 'center' : undefined,
 
   '&:not(:first-of-type)': {
