@@ -2,14 +2,14 @@ import React, {FC, ReactNode} from 'react';
 import styled from '@emotion/styled';
 import { PropsOf } from '@emotion/react';
 
-export type Property = PropsOf<'div'> & {
+export type Property = {
   id: string | number;
   label: string | ReactNode;
   value: string | ReactNode;
   icon?: ReactNode;
 };
 
-export type Props = {
+export type Props = PropsOf<'div'> & {
   size: 'sm' | 'md' | 'lg',
   items: Property[];
 };
