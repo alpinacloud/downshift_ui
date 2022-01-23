@@ -1,6 +1,6 @@
 {
-  "name": "@alpinacloud/downshift-ui",
-  "version": "1.1.38",
+  "name": "downshift-ui",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git://github.com/alpinacloud/downshift-ui",
@@ -14,9 +14,6 @@
     "src/**/*.{ts,tsx}": [
       "./node_modules/prettier/bin-prettier.js --parser typescript --print-width 120 --single-quote --trailing-comma es5 --write"
     ]
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "build": "rm -rf dist && babel --config-file ./.babelrc src --out-dir dist --extensions \".ts,.tsx\" --copy-files && tsc --declaration --emitDeclarationOnly --removeComments && rm -rf dist/stories",
