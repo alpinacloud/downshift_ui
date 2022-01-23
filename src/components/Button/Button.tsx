@@ -45,8 +45,20 @@ const shadowMap = {
 }
 
 const Root = styled.button<Pick<Props, 'variant' | 'btnSize' | 'disabled'>>((props) => {
-  const textColor = props.variant === 'link' ? props.theme.color.primary : props.variant === 'surface' ? props.theme.color.text : props.theme.color[props.variant + 'Text'];
+  const textColor = props.variant === 'link'
+    ? props.theme.color.primary
+    : props.variant === 'surface'
+    ? props.theme.color.text
+    : props.theme.color[props.variant + 'Text'];
 
+  const borderColor = props.variant === 'surface'
+    ? props.theme.color.contrast
+    : props.variant === 'link'
+    ? 'transparent'
+    : props.disabled
+    ? props.theme.color.disabled
+    : props.theme.color[props.variant];
+  
   return {
     backgroundColor: props.variant === 'link' ? 'transparent' : props.theme.color[props.variant],
     filter: props.variant !== 'link' ? `drop-shadow(${props.theme.shadow.sm})` : undefined,
@@ -57,11 +69,14 @@ const Root = styled.button<Pick<Props, 'variant' | 'btnSize' | 'disabled'>>((pro
     fontSize: props.theme.fontSize[props.btnSize],
     borderRadius: props.theme.radius,
     fontWeight: props.theme.fontWeight.normal,
-    transition: `box-shadow ${props.theme.speed}s, border-color ${props.theme.speed}s, background-color ${props.theme.speed}s, color ${props.theme.speed}s`,
+    transition: `box-shadow ${props.theme.speed}s,
+      border-color ${props.theme.speed}s,
+      background-color ${props.theme.speed}s,
+      color ${props.theme.speed}s`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    border: `1px solid ${props.variant === 'surface' ? props.theme.color.contrast : props.variant === 'link' ? 'transparent' : props.disabled ? props.theme.color.disabled : props.theme.color[props.variant]}`,
+    border: `1px solid ${borderColor}`,
     cursor: props.disabled ? 'not-allowed' : 'pointer',
     height: 'max-content',
 

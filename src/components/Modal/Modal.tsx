@@ -92,7 +92,12 @@ const Modal: FC<Props> = ({
           {!cardProps ? children :
             <Card
               aside={onClose && (
-                <CloseButton type="button" btnSize="md" variant="link" onClick={triggerClose}>
+                <CloseButton
+                  type="button"
+                  btnSize="md"
+                  variant="link"
+                  onClick={triggerClose}
+                >
                   {CloseCircle}
                 </CloseButton>
               )}

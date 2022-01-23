@@ -75,42 +75,49 @@ const Container = styled.div<Pick<Props, 'disabled'>>(props => ({
   pointerEvents: props.disabled ? 'none' : undefined,
 }));
 
-const Box = styled.span<Pick<Props, 'inputSize' | 'disabled'> & {isFocused: boolean, isChecked: boolean}>(props => ({
-  width: props.inputSize === 'lg' ? 36 : 24,
-  height: props.inputSize === 'lg' ? 36 : 24,
-  padding: props.inputSize === 'lg' ? 5 : 3,
-  border: `1px solid ${props.isChecked ? props.theme.color.primary : props.theme.color.contrast}`,
-  backgroundColor: props.disabled
-    ? props.theme.color.disabled
-    : props.isChecked ? props.theme.color.primary : props.theme.color.surface,
-  borderRadius: props.theme.radius,
-  cursor: 'pointer',
-  display: 'block',
-  transition: `background-color ${props.theme.speed}s, border-color ${props.theme.speed}s`,
-  flexShrink: 0,
+const Box = styled.span<
+  Pick<Props, 'inputSize' | 'disabled'> & {isFocused: boolean, isChecked: boolean}
+>(props => {
+  const borderColor = props.isChecked ? props.theme.color.primary : props.theme.color.contrast;
 
-  'svg': {
-    pointerEvents: 'none',
-  },
-  'svg path': {
-    color: props.isChecked ? props.theme.color.primaryText : 'transparent',
-  },
+  return {
+    width: props.inputSize === 'lg' ? 36 : 24,
+    height: props.inputSize === 'lg' ? 36 : 24,
+    padding: props.inputSize === 'lg' ? 5 : 3,
+    border: `1px solid ${borderColor}`,
+    backgroundColor: props.disabled
+      ? props.theme.color.disabled
+      : props.isChecked ? props.theme.color.primary : props.theme.color.surface,
+    borderRadius: props.theme.radius,
+    cursor: 'pointer',
+    display: 'block',
+    transition: `background-color ${props.theme.speed}s, border-color ${props.theme.speed}s`,
+    flexShrink: 0,
 
-  '&:not(:disabled):hover, &:not(:disabled):focus': {
-    borderColor: props.isChecked ? props.theme.color.primary : props.theme.color.contrastHard,
-  },
-  '&:not(:disabled):hover': {
-    backgroundColor: props.isChecked ? props.theme.color.primaryHard : undefined,
-  },
-}));
+    'svg': {
+      pointerEvents: 'none',
+    },
+    'svg path': {
+      color: props.isChecked ? props.theme.color.primaryText : 'transparent',
+    },
 
-const Label = styled.span<{}>(props => ({
+    '&:not(:disabled):hover, &:not(:disabled):focus': {
+      borderColor: props.isChecked
+        ? props.theme.color.primary
+        : props.theme.color.contrastHard,
+    },
+    '&:not(:disabled):hover': {
+      backgroundColor: props.isChecked ? props.theme.color.primaryHard : undefined,
+    },
+  };
+});
+
+const Label = styled.span(props => ({
   display: 'inline-block',
   fontSize: props.theme.fontSize.md,
   margin: '0 0 0 8px',
   color: props.theme.color.text,
   textAlign: 'left',
-
 }));
 
 export default Checkbox;

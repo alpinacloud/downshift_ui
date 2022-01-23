@@ -60,7 +60,10 @@ const Alert: FC<Props> = ({
 }
 
 const Root = styled.div<Pick<Props, 'variant' | 'size' | 'accent'>>((props) => {
-  const borderColor = props.variant === 'surface' ? props.theme.color.contrast : props.theme.color[props.variant + 'Text'];
+  const borderColor = props.variant === 'surface'
+    ? props.theme.color.contrast
+    : props.theme.color[props.variant + 'Text'];
+
   const backgroundColor = props.variant === 'surface'
     ? props.theme.color.surface
     : props.theme.color[props.variant];
@@ -74,8 +77,12 @@ const Root = styled.div<Pick<Props, 'variant' | 'size' | 'accent'>>((props) => {
     backgroundColor: backgroundColor,
     boxShadow: props.theme.shadow.sm,
     padding: props.theme.space[props.size],
-    borderLeft: props.accent === 'left-border' ? `${props.theme.space[props.size] / 3}px solid ${borderColor}` : 0,
-    borderTop: props.accent === 'top-border' ? `${props.theme.space[props.size] / 3}px solid ${borderColor}` : 0,
+    borderLeft: props.accent === 'left-border'
+      ? `${props.theme.space[props.size] / 3}px solid ${borderColor}`
+      : 0,
+    borderTop: props.accent === 'top-border'
+      ? `${props.theme.space[props.size] / 3}px solid ${borderColor}`
+      : 0,
     border: props.accent === 'border' ? `2px solid ${borderColor}` : undefined,
     borderRadius: props.theme.radius,
   
