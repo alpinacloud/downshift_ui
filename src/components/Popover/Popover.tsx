@@ -5,12 +5,19 @@ import { useTheme } from '@emotion/react';
 
 import useDisclosure from '../../utils/useDisclosure';
 import useOutsideClick from '../../utils/useOutsideClick';
-import { fadeIn, fadeOut } from '../../static/keyframes';
 
 export type Props = {
   overlay: ReactNode;
   children: ReactNode;
-  placement?: 'top' | 'left' | 'bottom' | 'right' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
+  placement?: 
+      'top' 
+    | 'left' 
+    | 'bottom' 
+    | 'right' 
+    | 'top-start' 
+    | 'top-end' 
+    | 'bottom-start' 
+    | 'bottom-end';
   style?: CSSProperties;
   overlayStyles?: CSSProperties;
   trigger?: 'click' | 'hover';

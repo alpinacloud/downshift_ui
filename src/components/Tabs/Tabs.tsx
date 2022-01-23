@@ -64,7 +64,9 @@ const Root = styled.div<Pick<Props, 'variant'>>((props) => ({
   width: '100%',
 }));
 
-const Tab = styled.button<Pick<Tab, 'disabled'> & Pick<Props, 'variant' | 'size' | 'shape'> & { isActive: boolean }>`
+const Tab = styled.button<
+  Pick<Tab, 'disabled'> & Pick<Props, 'variant' | 'size' | 'shape'> & { isActive: boolean }
+>`
   ${props => `
     background-color: transparent;
     padding: ${props.theme.space[props.size]}px;
@@ -114,8 +116,6 @@ const Tab = styled.button<Pick<Tab, 'disabled'> & Pick<Props, 'variant' | 'size'
         color: ${props.isActive ? undefined : props.theme.color.heading};
       }
     `};
-
-    
   `}
 `;
 

@@ -19,7 +19,13 @@ const Spinner: FC<Props> = ({
   className,
 }) => {
   return (
-    <Root size={size} color={color} animationType={animationType} style={style} className={className} />
+    <Root
+      size={size}
+      color={color}
+      animationType={animationType}
+      style={style}
+      className={className}
+    />
   );
 }
 

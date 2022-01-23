@@ -32,11 +32,19 @@ const Tag: FC<Props> = ({
 }
 
 
-const Root = styled.span<Pick<Props, 'size' | 'variant' | 'customColorScheme'>>(props => {
-  const color = props.customColorScheme ? props.customColorScheme.text : props.theme.color[props.variant + 'Text'];
+const Root = styled.span<
+  Pick<Props, 'size' | 'variant' | 'customColorScheme'>
+>(props => {
+  const backgroundColor = props.customColorScheme
+    ? props.customColorScheme.background
+    : props.theme.color[props.variant];
+
+  const color = props.customColorScheme
+    ? props.customColorScheme.text
+    : props.theme.color[props.variant + 'Text'];
 
   return {
-    backgroundColor: props.customColorScheme ? props.customColorScheme.background : props.theme.color[props.variant],
+    backgroundColor,
     color,
     padding: props.theme.fontSize[props.size] / 1.5,
     paddingTop: props.theme.fontSize[props.size] / 2,

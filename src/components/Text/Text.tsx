@@ -22,14 +22,23 @@ const Text: FC<Props> = ({
   className,
 }) => {
   return (
-    <Root size={size} color={color} weight={weight} font={font} style={style} className={className}>
+    <Root
+      size={size}
+      color={color}
+      weight={weight}
+      font={font}
+      style={style}
+      className={className}
+    >
       {children}
     </Root>
   );
 }
 
 
-const Root = styled.p<Pick<Props, 'size' | 'weight' | 'font' | 'color'>>(props => ({
+const Root = styled.p<
+  Pick<Props, 'size' | 'weight' | 'font' | 'color'>
+>(props => ({
   width: '100%',
   margin: 0,
   color: props.theme.color[props.color],

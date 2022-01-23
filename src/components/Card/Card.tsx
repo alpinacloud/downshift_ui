@@ -58,13 +58,19 @@ const Card: React.FC<Props> = ({
   );
 };
 
-export const CardContent = styled.div<Pick<Props, 'loading' | 'spacing'> & {contrast?: boolean}>(props => ({
-  backgroundColor: props.contrast ? props.theme.color.surfaceContrast : props.theme.color.surface,
+export const CardContent = styled.div<
+  Pick<Props, 'loading' | 'spacing'> & {contrast?: boolean}
+>(props => ({
+  backgroundColor: props.contrast
+    ? props.theme.color.surfaceContrast
+    : props.theme.color.surface,
   borderTop: `1px solid ${props.theme.color.contrast}`,
   borderBottom: `1px solid ${props.theme.color.contrast}`,
   color: props.theme.color.text,
   fontWeight: props.theme.fontWeight.normal,
-  padding: props.loading ? props.theme.space[props.spacing] * 2 : props.theme.space[props.spacing],
+  padding: props.loading
+    ? props.theme.space[props.spacing] * 2
+    : props.theme.space[props.spacing],
   textAlign: props.loading ? 'center' : undefined,
 
   '&:not(:first-of-type)': {
@@ -75,10 +81,6 @@ export const CardContent = styled.div<Pick<Props, 'loading' | 'spacing'> & {cont
     borderBottom: 0,
   },
 }));
-
-CardContent.defaultProps = {
-  spacing: 'md',
-};
 
 export const CardContainer = styled.div<Pick<Props, | 'spacing' | 'loading'>>(props => ({
   backgroundColor: props.theme.color.surface,

@@ -53,8 +53,12 @@ const Item = styled.button<Pick<Props, 'size'> & { isActive: boolean }>(props =>
   width: '100%',
   border: 0,
   borderRadius: props.theme.radius,
-  backgroundColor: props.isActive ? props.theme.color.primary : props.theme.color.surface,
-  color: props.isActive ? props.theme.color.primaryText : props.theme.color.text,
+  backgroundColor: props.isActive
+    ? props.theme.color.primary
+    : props.theme.color.surface,
+  color: props.isActive
+    ? props.theme.color.primaryText
+    : props.theme.color.text,
   padding: props.theme.space[props.size] / 2,
   marginBottom: props.theme.space[props.size] / 1.75,
   cursor: props.disabled ? 'not-allowed' : 'pointer',
@@ -69,7 +73,9 @@ const Item = styled.button<Pick<Props, 'size'> & { isActive: boolean }>(props =>
     width: props.theme.fontSize[props.size],
     height: props.theme.fontSize[props.size],
     marginRight: props.theme.space.sm / 2,
-    fill: props.isActive ? props.theme.color.primaryText : props.theme.color.text,
+    fill: props.isActive ?
+      props.theme.color.primaryText
+      : props.theme.color.text,
   },
 
   '&:disabled': {
