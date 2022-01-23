@@ -1,7 +1,8 @@
 import React, {FC, ReactNode} from 'react';
 import styled from '@emotion/styled';
+import { PropsOf } from '@emotion/react';
 
-export type Property = {
+export type Property = PropsOf<'div'> & {
   id: string | number;
   label: string | ReactNode;
   value: string | ReactNode;
@@ -16,9 +17,10 @@ export type Props = {
 const Menu: FC<Props> = ({
   size = 'md',
   items,
+  ...rest
 }) => {
   return (
-    <Root>
+    <Root {...rest}>
       {items.map(item => (
         <Property key={item.id} size={size}>
           <span className="label">
@@ -34,8 +36,9 @@ const Menu: FC<Props> = ({
   );
 }
 
-const Root = styled.div(() => ({
+const Root = styled.div(props => ({
   width: '100%',
+  padding: props.theme.space.md,
 }));
 
 const Property = styled.div<Pick<Props, 'size'>>(props => ({
