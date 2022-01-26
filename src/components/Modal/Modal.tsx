@@ -109,9 +109,9 @@ const Modal: FC<Props> = ({
                 ...cardProps.style,
               }}
             >
-              <CardContent contrast spacing={cardProps.spacing} style={cardContentStyles}>
+              <StyledCardContent contrast spacing={cardProps.spacing} style={cardContentStyles}>
                 {children}
-              </CardContent>
+              </StyledCardContent>
               {footer && <CardContent spacing={cardProps.spacing}>{footer}</CardContent>}
             </Card>
           }
@@ -145,6 +145,11 @@ const ContentContainer = styled.div<{isClosing: boolean}>(props => ({
   alignItems: 'center',
   justifyContent: 'center',
   animation: `${props.isClosing ? scaleOut : scaleIn} ${props.theme.speed}s`,
+}));
+
+const StyledCardContent = styled(CardContent)(() => ({
+  maxHeight: '60vh',
+  overflowY: 'auto',
 }));
 
 const CloseButton = styled(Button)(props => ({
