@@ -3,7 +3,7 @@
   "version": "0.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "git://github.com/alpinacloud/downshift-ui",
+  "repository": "git://github.com/alpinacloud/downshift_ui",
   "author": "Aram @ Alpina",
   "license": "WTFPL",
   "private": false,
