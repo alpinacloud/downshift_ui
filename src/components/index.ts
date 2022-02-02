@@ -23,3 +23,5 @@ export { default as Dropdown } from './Dropdown/Dropdown';
 export { default as PropertyView } from './PropertyView/PropertyView';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as Image } from './Image/Image';
+export { default as Dialogue } from './Dialogue/Dialogue';
+export { default as Flex } from './Flex/Flex';
