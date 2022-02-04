@@ -49,11 +49,13 @@ const Card: React.FC<Props> = ({
         </CardHeader>
       )}
 
-      {loading ? (
-        <CardContent loading>
+      {loading && (
+        <LoadingOverlay>
           <Spinner size={spacing} />
-        </CardContent>
-      ) : children}
+        </LoadingOverlay>
+      )}
+
+      {children}
     </CardContainer>
   );
 };
@@ -67,14 +69,24 @@ export const CardContent = styled.div<
   borderBottom: `1px solid ${props.theme.color.contrast}`,
   color: props.theme.color.text,
   fontWeight: props.theme.fontWeight.normal,
-  padding: props.loading
-    ? props.theme.space[props.spacing || 'md'] * 2
-    : props.theme.space[props.spacing || 'md'],
-  textAlign: props.loading ? 'center' : undefined,
+  padding: props.theme.space[props.spacing || 'md'],
 
   '&:last-of-type': {
     borderBottom: 0,
   }
+}));
+
+export const LoadingOverlay = styled.div(props => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: props.theme.color.overlayBackground,
+  zIndex: 10,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }));
 
 export const CardContainer = styled.div<Pick<Props, | 'spacing' | 'loading'>>(props => ({
