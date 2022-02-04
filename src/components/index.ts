@@ -25,3 +25,4 @@ export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as Image } from './Image/Image';
 export { default as Dialogue } from './Dialogue/Dialogue';
 export { default as Flex } from './Flex/Flex';
+export { default as FormControl } from './FormControl/FormControl';

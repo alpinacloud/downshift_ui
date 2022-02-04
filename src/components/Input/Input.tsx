@@ -15,30 +15,13 @@ const Input: FC<Props> = ({
   ...rest
 }) => {
   return (
-    <Root>
-      <StyledInput
-        {...rest}
-        capsule={capsule}
-        inputSize={inputSize}
-      />
-      {error && <ErrorText inputSize={inputSize}>{error}</ErrorText>}
-    </Root>
+    <StyledInput
+      {...rest}
+      capsule={capsule}
+      inputSize={inputSize}
+    />
   );
 }
-
-const Root = styled.div(() => ({
-  width: '100%',
-}));
-
-const ErrorText = styled.span<Pick<Props, 'inputSize'>>(props => ({
-  color: props.theme.color.error,
-  fontWeight: props.theme.fontWeight.normal,
-  fontSize: props.theme.fontSize[props.inputSize] * 0.9,
-  marginTop: props.theme.space.sm,
-  marginBottom: props.theme.space.sm,
-  display: 'block',
-  width: '100%',
-}));
 
 const StyledInput = styled.input<Pick<Props, 'inputSize' | 'capsule'>>((props) => ({
   display: 'flex',
