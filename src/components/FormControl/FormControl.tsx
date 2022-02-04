@@ -9,7 +9,7 @@ type Props = PropsOf<'div'> & {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const FormControl: React.FC<Props> = ({ label, error, children, size = 'md', ...rest }) => {
+const FormControl: FC<Props> = ({ label, error, children, size = 'md', ...rest }) => {
   return (
     <Container {...rest}>
       {label && <Label>{label}</Label>}

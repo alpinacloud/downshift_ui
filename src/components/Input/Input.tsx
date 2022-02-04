@@ -5,13 +5,11 @@ import { PropsOf } from '@emotion/react';
 type Props = PropsOf<'input'> & {
   inputSize?: 'sm' | 'md' | 'lg';
   capsule?: boolean;
-  error?: string;
 }
 
 const Input: FC<Props> = ({
   inputSize = 'md',
   capsule,
-  error,
   ...rest
 }) => {
   return (
