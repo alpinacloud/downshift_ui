@@ -64,7 +64,6 @@ export const CardContent = styled.div<
   backgroundColor: props.contrast
     ? props.theme.color.surfaceContrast
     : props.theme.color.surface,
-  borderTop: `1px solid ${props.theme.color.contrast}`,
   borderBottom: `1px solid ${props.theme.color.contrast}`,
   color: props.theme.color.text,
   fontWeight: props.theme.fontWeight.normal,
@@ -73,13 +72,9 @@ export const CardContent = styled.div<
     : props.theme.space[props.spacing || 'md'],
   textAlign: props.loading ? 'center' : undefined,
 
-  '&:not(:first-of-type)': {
-    borderBottom: 0,
-  },
-
   '&:last-of-type': {
     borderBottom: 0,
-  },
+  }
 }));
 
 export const CardContainer = styled.div<Pick<Props, | 'spacing' | 'loading'>>(props => ({
@@ -96,9 +91,8 @@ const CardHeader = styled.div<Pick<Props, | 'spacing'>>(props => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  marginBottom: props.theme.space[props.spacing],
   padding: props.theme.space[props.spacing],
-  paddingBottom: 0,
+  borderBottom: `1px solid ${props.theme.color.contrast}`,
 }));
 
 const HeaderWrapper = styled.div<Pick<Props, | 'iconSize'>>(props => ({
