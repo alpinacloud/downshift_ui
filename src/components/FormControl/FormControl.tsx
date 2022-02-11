@@ -12,7 +12,7 @@ type Props = PropsOf<'div'> & {
 const FormControl: FC<Props> = ({ label, error, children, size = 'md', ...rest }) => {
   return (
     <Container {...rest}>
-      {label && <Label>{label}</Label>}
+      {label && <Label size={size}>{label}</Label>}
       {children}
       {error && <ErrorText size={size}>{error}</ErrorText>}
     </Container>
@@ -31,9 +31,9 @@ const Container = styled.div(props => ({
 }));
 
 const Label = styled.span<Pick<Props, 'size'>>(props => ({
-  color: props.theme.color.heading,
+  color: props.theme.color.text,
   fontWeight: props.theme.fontWeight.heavy,
-  fontSize: props.theme.fontSize[props.size] * 0.9,
+  fontSize: props.theme.fontSize[props.size],
   display: 'block',
   marginBottom: props.theme.space.sm / 2,
   width: '100%',
@@ -42,7 +42,7 @@ const Label = styled.span<Pick<Props, 'size'>>(props => ({
 const ErrorText = styled.div<Pick<Props, 'size'>>(props => ({
   color: props.theme.color.error,
   fontWeight: props.theme.fontWeight.normal,
-  fontSize: props.theme.fontSize[props.size] * 0.9,
+  fontSize: props.theme.fontSize[props.size],
   marginTop: props.theme.space.sm,
   marginBottom: props.theme.space.sm,
   display: 'block',
