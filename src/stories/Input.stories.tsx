@@ -1,6 +1,6 @@
 import Input from '../components/Input/Input';
 
-export const basic = ({ value, disabled, inputSize, error, placeholder, type, capsule }) => {
+export const basic = ({ value, disabled, inputSize, placeholder, type, capsule }) => {
   return (
     <Input
       type={type}
@@ -8,7 +8,6 @@ export const basic = ({ value, disabled, inputSize, error, placeholder, type, ca
       value={value}
       disabled={disabled}
       placeholder={placeholder}
-      error={error}
       capsule={capsule}
     />
   );
