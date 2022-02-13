@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, ReactNode, useRef, useState } from 'react';
+import React, { CSSProperties, FC, ReactNode, ForwardedRef, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
@@ -9,6 +9,7 @@ import useOutsideClick from '../../utils/useOutsideClick';
 export type Props = {
   overlay: ReactNode;
   children: ReactNode;
+  ref?: ForwardedRef<ForwardRefType>;
   placement?: 
       'top' 
     | 'left' 
@@ -24,7 +25,11 @@ export type Props = {
   className?: string;
 }
 
-const Popover: FC<Props> = ({
+export type ForwardRefType = {
+  forceClose: () => void;
+}
+
+const Popover: FC<Props> = React.forwardRef<ForwardRefType, Props>(({
   trigger = 'click',
   placement = 'bottom',
   overlayStyles,
@@ -32,7 +37,7 @@ const Popover: FC<Props> = ({
   className,
   children,
   overlay,
-}) => {
+}, ref) => {
   const theme = useTheme();
   const {onClose, onOpen, onToggle, isOpen} = useDisclosure();
 
@@ -54,7 +59,13 @@ const Popover: FC<Props> = ({
   const handleClose = () => {
     mouseOverOverlayRef.current = false;
     onClose();
-  };
+  }
+
+  React.useImperativeHandle(ref, () => ({
+    forceClose() {
+      handleClose();
+    },
+  }));
 
   useOutsideClick({current: popperElement}, () => handleClose(), [{current: referenceElement}]);
 
@@ -105,7 +116,7 @@ const Popover: FC<Props> = ({
       </Ref>
     </>
   );
-}
+});
 
 const Ref = styled.div(() => ({
   display: 'inline-block',
