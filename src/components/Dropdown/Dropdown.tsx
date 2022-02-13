@@ -2,19 +2,23 @@ import React, { FC } from 'react';
 import Popover, { Props as PopoverProps } from '../Popover/Popover';
 import Menu, { Props as MenuProps } from '../Menu/Menu';
 
-type Props = MenuProps & {
+export type Props = MenuProps & {
   popoverProps?: Omit<PopoverProps, 'overlay' | 'children'>;
 };
 
-const Dropdown: FC<Props> = ({ children, items, size, onClick, popoverProps }) => {
+const Dropdown: FC<Props> = ({
+  children,
+  size = 'md',
+  popoverProps,
+  ...rest
+}) => {
   return (
     <Popover
       {...popoverProps}
       overlay={(
         <Menu
-          items={items}
           size={size}
-          onClick={onClick}
+          {...rest}
         />
       )}
     >
