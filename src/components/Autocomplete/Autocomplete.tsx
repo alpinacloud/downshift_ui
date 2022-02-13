@@ -54,7 +54,7 @@ const Autocomplete: FC<Props> = ({
   }, [items, value]);
 
   const filteredItems = React.useMemo(() =>
-    items.filter(searchFilter)
+    searchFilter ? items.filter(searchFilter) : items
   , [searchFilter]);
 
   return (
