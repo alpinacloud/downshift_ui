@@ -83,9 +83,11 @@ const Autocomplete: FC<Props> = ({
             onClick={onSelect}
             activeId={value}
             style={{
-              ...style,
               borderTopLeftRadius: 0,
               borderTopRightRadius: 0,
+              overflow: 'auto',
+              height: '40vh',
+              ...style,
             }}
             {...rest}
           />
@@ -109,7 +111,7 @@ const Root = styled.button<Pick<Props, 'size'>>(props => ({
   border: `1px solid ${props.theme.color.contrast}`,
   filter: `drop-shadow(${props.theme.shadow.sm})`,
   padding: props.theme.space[props.size],
-  paddingRight: props.theme.space[props.size] + props.theme.space[props.size] * 2,
+  paddingRight: props.theme.space[props.size] + 24,
   fontSize: props.theme.fontSize[props.size],
   fontWeight: props.theme.fontWeight.normal,
   color: props.theme.color.text,
@@ -132,10 +134,10 @@ const Root = styled.button<Pick<Props, 'size'>>(props => ({
   svg: {
     fill: props.theme.color.text,
     position: 'absolute',
-    right: props.theme.space[props.size] * 0.8,
     zIndex: 1,
-    height: props.theme.space[props.size] * 1.6,
-    width: props.theme.space[props.size] * 1.6,
+    right: props.theme.space[props.size],
+    height: 20,
+    width: 20,
   },
 }));
 
